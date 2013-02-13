@@ -3,6 +3,12 @@ title       "Request Timing"
 #area        :stacked
 #description "The object-server replication timing and counts"
 
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+		    #:dashed => true,
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"
+
 field :head, :scale => 1,
             :color => "blue",
             :alias => "HEAD",
@@ -28,8 +34,3 @@ field :get,  :scale => 1,
                :alias => "GET",
                :data  => "averageSeries(stats.timers.services.cloud.storage.swift-storage-*.object-server.GET.timing.count)"
 
-field :ring_deploy, :scale => 1,
-                    :color => "white",
-		    #:dashed => true,
-                    :alias => "ring deploy",
-                    :data => "drawAsInfinite(events.deploy.swift-ring)"

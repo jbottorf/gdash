@@ -4,6 +4,12 @@ title       "Combined Disk IO"
 ymin 0
 description "The combined Disk IO for all swift-storage nodes"
 
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+		    #:dashed => true,
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"
+
 field :writes, :scale => 1,
                :color => "green",
                :alias => "write iops",
@@ -24,9 +30,3 @@ field :reads, :scale => 1,
 #             	   :alias => "read throughput",
 #             	   :data  => "averageSeries(hosts.SDSC_CI.swift-storage-*.diskstat_sd*_read_bytes_per_sec)"
 
-field :ring_deploy, :scale => 1,
-		    :t_linewidth => 16,
-                    :color => "red",
-		    #:dashed => true,
-                    :alias => "ring deploy",
-                    :data => "drawAsInfinite(events.deploy.swift-ring)"

@@ -3,6 +3,12 @@ title       "Combined Bandwidth Usage"
 #area        :stacked
 description "The combined bandwidth usage for all swift-storage nodes"
 
+field :ring_deploy, :scale => 1,
+		    :color => "white",
+		    #:dashed => true,
+		    :alias => "ring deploy",
+		    :data => "drawAsInfinite(events.deploy.swift-ring)"
+
 field :max_in, :scale => 1,
                :color => "green",
                :alias => "Max In",
@@ -23,8 +29,4 @@ field :avg_out, :scale => 1,
                 :alias => "Avg Out",
                 :data  => "averageSeries(hosts.SDSC_CI.swift-storage-*.tx_bytes_*)"
 
-field :ring_deploy, :scale => 1,
-		    :color => "white",
-		    #:dashed => true,
-		    :alias => "ring deploy",
-		    :data => "drawAsInfinite(events.deploy.swift-ring)"
+

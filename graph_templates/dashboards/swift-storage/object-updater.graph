@@ -3,6 +3,13 @@ title       "Object-server replication timing and count"
 #area        :stacked
 description "The object-server replication timing and counts"
 
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+		    #:dashed => true,
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)",
+		    :second_y_axis => true
+
 field :min, :scale => 1,
             :color => "green",
             :alias => "Min",
@@ -24,9 +31,4 @@ field :count,  :scale => 1,
                :data  => "sumSeries(stats.timers.services.cloud.storage.swift-storage-*.object-server.REPLICATE.timing.count)",
 	       :second_y_axis => true
 
-field :ring_deploy, :scale => 1,
-                    :color => "white",
-		    #:dashed => true,
-                    :alias => "ring deploy",
-                    :data => "drawAsInfinite(events.deploy.swift-ring)",
-		    :second_y_axis => true
+

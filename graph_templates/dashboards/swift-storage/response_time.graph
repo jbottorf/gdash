@@ -3,6 +3,12 @@ title       "Response Time"
 #area        :stacked
 description "The response time as reported by nagios check script"
 
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+		    #:dashed => true,
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"
+
 field :time, :scale => 1,
                :color => "blue",
                :alias => "response time",
@@ -13,9 +19,4 @@ field :avg_time, :scale => 1,
                :alias => "response time (moving average)",
                :data  => "movingAverage(services.cloud.storage.monitor.responsetime,5)"
 
-field :ring_deploy, :scale => 1,
-                    :color => "white",
-		    #:dashed => true,
-                    :alias => "ring deploy",
-                    :data => "drawAsInfinite(events.deploy.swift-ring)"
 

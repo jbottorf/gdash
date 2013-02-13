@@ -8,6 +8,12 @@ hide_grid false
 
 description "The overall health of the cluster based on the swift-dispersion-report"
 
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+		    #:dashed => true,
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"
+
 field :objects, :scale => 1,
                 :color => "blue",
                 :alias => "objects",
@@ -18,8 +24,3 @@ field :containers, :scale => 1,
                    :alias => "containers",
                    :data  => "services.cloud.storage.monitor.dispersion_health.containers"
 
-field :ring_deploy, :scale => 1,
-                    :color => "white",
-		    #:dashed => true,
-                    :alias => "ring deploy",
-                    :data => "drawAsInfinite(events.deploy.swift-ring)"

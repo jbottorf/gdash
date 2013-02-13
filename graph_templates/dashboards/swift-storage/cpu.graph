@@ -3,6 +3,12 @@ vtitle      "percent"
 #area        :stacked
 description "The combined CPU usage for all swift-storage nodes"
 
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+		    #:dashed => true,
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"
+
 field :iowait, :scale => 1,
                :color => "red",
                :alias => "IO Wait",
@@ -18,9 +24,4 @@ field :user, :scale => 1,
              :alias => "User",
              :data  => "sumSeries(hosts.SDSC_CI.swift-storage-*.cpu_user)"
 
-field :ring_deploy, :scale => 1,
-                    :color => "white",
-		    #:dashed => true,
-                    :alias => "ring deploy",
-                    :data => "drawAsInfinite(events.deploy.swift-ring)"
 
