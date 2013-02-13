@@ -1,0 +1,29 @@
+title       "Combined Bandwidth Usage (Zone 5)"
+#vtitle      " "
+#area        :stacked
+description "The combined bandwidth usage for all swift-storage nodes in zone 5"
+
+field :max_in, :scale => 1,
+               :color => "green",
+               :alias => "Max In",
+               :data  => "maxSeries(hosts.SDSC_CI.swift-storage-5-*.rx_bytes_*)"
+
+field :avg_in, :scale => 1,
+               :color => "blue",
+               :alias => "Avg In",
+               :data  => "averageSeries(hosts.SDSC_CI.swift-storage-5-*.rx_bytes_*)"
+
+field :max_out, :scale => 1,
+                :color => "red",
+                :alias => "Max Out",
+                :data  => "maxSeries(hosts.SDSC_CI.swift-storage-5-*.tx_bytes_*)"
+
+field :avg_out, :scale => 1,
+                :color => "yellow",
+                :alias => "Avg Out",
+                :data  => "averageSeries(hosts.SDSC_CI.swift-storage-5-*.tx_bytes_*)"
+
+field :ring_deploy, :scale => 1,
+		    :color => "white",
+		    :alias => "ring deploy",
+		    :data => "drawAsInfinite(events.deploy.swift-ring)"

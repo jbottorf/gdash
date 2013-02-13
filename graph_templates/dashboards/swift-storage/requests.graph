@@ -1,0 +1,35 @@
+title       "Request Timing"
+#vtitle      " "
+#area        :stacked
+#description "The object-server replication timing and counts"
+
+field :head, :scale => 1,
+            :color => "blue",
+            :alias => "HEAD",
+            :data  => "averageSeries(stats.timers.services.cloud.storage.swift-storage-*.object-server.HEAD.timing.count)"
+
+field :delete, :scale => 1,
+            :color => "red",
+            :alias => "DELETE",
+            :data  => "averageSeries(stats.timers.services.cloud.storage.swift-storage-*.object-server.DELETE.timing.count)"
+
+field :replicate,  :scale => 1,
+             :color => "brown",
+             :alias => "REPLICATE",
+             :data  => "averageSeries(stats.timers.services.cloud.storage.swift-storage-*.object-server.REPLICATE.timing.upper)"
+
+field :put,  :scale => 1,
+               :color => "green",
+               :alias => "PUT",
+               :data  => "averageSeries(stats.timers.services.cloud.storage.swift-storage-*.object-server.PUT.timing.count)"
+
+field :get,  :scale => 1,
+               :color => "purple",
+               :alias => "GET",
+               :data  => "averageSeries(stats.timers.services.cloud.storage.swift-storage-*.object-server.GET.timing.count)"
+
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+		    #:dashed => true,
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"

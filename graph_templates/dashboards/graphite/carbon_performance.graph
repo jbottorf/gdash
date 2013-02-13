@@ -1,0 +1,34 @@
+title       "Carbon Performance"
+#vtitle      " "
+#area        :stacked
+#description "The object-server replication timing and counts"
+
+field :updates, :scale => 1,
+                :color => "blue",
+                :alias => "Updates",
+                :data  => "sumSeries(group(carbon.agents.*.updateOperations))"
+
+field :metrics_rec, :scale => 1,
+            	    :color => "green",
+            	    :alias => "Metrics Received",
+            	    :data  => "sumSeries(group(carbon.agents.*.metricsReceived))"
+
+field :committed,  :scale => 1,
+             	   :color => "orange",
+             	   :alias => "Committed Points",
+             	   :data  => "sumSeries(group(carbon.agents.*.committedPoints))"
+
+field :ppu,  :scale => 1,
+             :color => "yellow",
+             :alias => "PPU",
+             :data  => "secondYAxis(sumSeries(group(carbon.agents.*.pointsPerUpdate)))"
+
+field :cpu,  :scale => 1,
+             :color => "red",
+             :alias => "CPU (avg)",
+             :data  => "secondYAxis(averageSeries(group(carbon.agents.*.cpuUsage)))"
+
+field :creates,  :scale => 1,
+             	 :color => "purple",
+             	 :alias => "Creates",
+             	 :data  => "secondYAxis(sumSeries(group(carbon.agents.*.creates)))"

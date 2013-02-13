@@ -1,0 +1,35 @@
+title       "Object-server replication timing and count (Zone 5)"
+#vtitle      " "
+#area        :stacked
+description "The object-server replication timing and counts for storage nodes in zone 5"
+
+field :min, :scale => 1,
+            :color => "green",
+            :alias => "Min",
+            :data  => "sumSeries(stats.timers.services.cloud.storage.swift-storage-5-*.object-server.REPLICATE.timing.lower)"
+
+field :avg, :scale => 1,
+            :color => "blue",
+            :alias => "Avg",
+            :data  => "sumSeries(stats.timers.services.cloud.storage.swift-storage-5-*.object-server.REPLICATE.timing.mean)"
+
+#field :ninety, :scale => 1,
+#             :color => "orange",
+#             :alias => "90th Pctile",
+#             :data  => "sumSeries(stats.timers.services.cloud.storage.swift-storage-5-*.object-server.REPLICATE.timing.mean_90)"
+
+field :max,  :scale => 1,
+             :color => "red",
+             :alias => "Max",
+             :data  => "sumSeries(stats.timers.services.cloud.storage.swift-storage-5-*.object-server.REPLICATE.timing.upper)"
+
+field :count,  :scale => 1,
+               :color => "orange",
+               :alias => "count",
+               :data  => "sumSeries(stats.timers.services.cloud.storage.swift-storage-5-*.object-server.REPLICATE.timing.count)",
+	       :second_y_axis => true
+
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"

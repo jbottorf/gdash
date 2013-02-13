@@ -1,0 +1,25 @@
+title       "Combined CPU Usage (Zone 2)"
+vtitle      "percent"
+#area        :stacked
+description "The combined CPU usage for all swift-storage nodes in zone 2"
+
+field :iowait, :scale => 1,
+               :color => "red",
+               :alias => "IO Wait",
+               :data  => "sumSeries(hosts.SDSC_CI.swift-storage-2-*.cpu_wio)"
+
+field :system, :scale => 1,
+               :color => "orange",
+               :alias => "System",
+               :data  => "sumSeries(hosts.SDSC_CI.swift-storage-2-*.cpu_system)"
+
+field :user, :scale => 1,
+             :color => "yellow",
+             :alias => "User",
+             :data  => "sumSeries(hosts.SDSC_CI.swift-storage-2-*.cpu_user)"
+
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"
+

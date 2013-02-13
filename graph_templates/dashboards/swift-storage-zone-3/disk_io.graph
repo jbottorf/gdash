@@ -1,0 +1,29 @@
+title       "Combined Disk IO (Zone 3)"
+#vtitle      " "
+#area        :stacked
+description "The combined Disk IO for all swift-storage nodes in zone 3"
+
+field :writes, :scale => 1,
+               :color => "green",
+               :alias => "write iops",
+               :data  => "sumSeries(hosts.SDSC_CI.swift-storage-3-*.diskstat_sd*_writes)"
+
+field :reads, :scale => 1,
+               :color => "blue",
+               :alias => "read iops",
+               :data  => "sumSeries(hosts.SDSC_CI.swift-storage-3-*.diskstat_sd*_reads)"
+
+#field :write_thru, :scale => 1,
+#             	   :color => "yellow",
+#             	   :alias => "write throughput",
+#             	   :data  => "averageSeries(hosts.SDSC_CI.swift-storage-3-*.diskstat_sd*_write_bytes_per_sec)"
+#
+#field :read_thru,  :scale => 1,
+#             	   :color => "blue",
+#             	   :alias => "read throughput",
+#             	   :data  => "averageSeries(hosts.SDSC_CI.swift-storage-3-*.diskstat_sd*_read_bytes_per_sec)"
+
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"

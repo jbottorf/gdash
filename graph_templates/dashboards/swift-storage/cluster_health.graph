@@ -1,0 +1,25 @@
+title       "Cluster Health"
+#vtitle      " "
+#area        :first
+linewidth 2
+ymax 100.25
+hide_grid false
+#linemode "staircase"
+
+description "The overall health of the cluster based on the swift-dispersion-report"
+
+field :objects, :scale => 1,
+                :color => "blue",
+                :alias => "objects",
+                :data  => "services.cloud.storage.monitor.dispersion_health.objects"
+
+field :containers, :scale => 1,
+                   :color => "green",
+                   :alias => "containers",
+                   :data  => "services.cloud.storage.monitor.dispersion_health.containers"
+
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+		    #:dashed => true,
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"

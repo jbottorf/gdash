@@ -1,0 +1,16 @@
+title       "Cloud Explorer Logins"
+#vtitle      " "
+#area        :first
+description "Login successes and failures"
+linewidth 2
+
+field :metrics_rec, :scale => -1,
+            	    :color => "red",
+            	    :alias => "Failures",
+                    :data  => "summarize(sumSeries(group(stats.services.cloud.explorer.*.logins.failures)), '5min')"
+
+field :updates, :scale => 1,
+                :color => "green",
+                :alias => "Logins",
+                :data  => "summarize(sumSeries(group(stats.services.cloud.explorer.*.logins.successful)), '5min')"
+

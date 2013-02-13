@@ -1,0 +1,17 @@
+title       "Pending Asyncs"
+#vtitle      " "
+#area        :first
+linewidth 2
+
+description "The number of current asyncs pending"
+
+field :objects, :scale => 1,
+                :color => "blue",
+                :alias => "objects",
+                :data  => "sumSeries(stats.services.cloud.storage.*.object-server.async_pendings)"
+
+field :ring_deploy, :scale => 1,
+                    :color => "white",
+		    #:dashed => true,
+                    :alias => "ring deploy",
+                    :data => "drawAsInfinite(events.deploy.swift-ring)"

@@ -1,0 +1,12 @@
+title       "Space Usage"
+#vtitle      " "
+#area        :stacked
+description "The combined space usage for all swift-storage accounts"
+linewidth 2
+
+field :writes, :scale => 1,
+               :color => "blue",
+               :alias => "disk used",
+               :data  => "sumSeries(services.cloud.storage.accounts.*, services.cloud.storage.duracloud.accounts.*)"
+
+# TODO:  add total disk space available and a line across the 80% threshold

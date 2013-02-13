@@ -1,0 +1,19 @@
+title       "Account Creates"
+#vtitle      " "
+area "stacked"
+linewidth 2
+ymin 0
+draw_null_as_zero true
+linemode "staircase"
+
+description "Number of accounts created"
+
+field :creates, :scale => 1,
+                :color => "green",
+                :alias => "accounts created",
+                :data  => "summarize(sumSeries(services.cloud.storage.monitor.account.create), '15min')"
+
+field :requests, :scale => 1,
+                 :color => "blue",
+                 :alias => "accounts requested",
+                 :data  => "summarize(sumSeries(services.cloud.storage.monitor.account.request), '15min')"
