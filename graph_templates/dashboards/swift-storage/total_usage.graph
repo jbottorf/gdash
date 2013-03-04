@@ -1,12 +1,45 @@
-title       "Space Usage"
+title       "Disk Usage"
 #vtitle      " "
-#area        :stacked
+area        :first
 description "The combined space usage for all swift-storage accounts"
 linewidth 2
 
-field :writes, :scale => 1,
-               :color => "blue",
-               :alias => "disk used",
-               :data  => "sumSeries(services.cloud.storage.accounts.*, services.cloud.storage.duracloud.accounts.*)"
+field :used, :scale => 2,
+             :color => "blue",
+             :alias => "disk used",
+             :data  => "sumSeries(services.cloud.storage.accounts.*, services.cloud.storage.duracloud.accounts.*)"
 
-# TODO:  add total disk space available and a line across the 80% threshold
+#field :used, :scale => 1,
+#	     :color => "blue",
+#	     :alias => "disk used",
+#	     :data => "services.cloud.storage.monitor.disk.used"
+
+
+field :avail, :scale => 1,
+	      :color => "red",
+	      :alias => "disk available",
+	      :data => "services.cloud.storage.monitor.disk.available"
+
+field :pct90, :scale => 0.9,
+	      :color => "red",
+	      :alias => "90% threshold",
+	      :dashed => true,
+	      :data => "services.cloud.storage.monitor.disk.available"
+
+field :pct80, :scale => 0.8,
+	      :color => "orange",
+	      :alias => "80% threshold",
+	      :dashed => true,
+	      :data => "services.cloud.storage.monitor.disk.available"
+
+field :pct70, :scale => 0.7,
+	      :color => "green",
+	      :alias => "70% threshold",
+	      :dashed => true,
+	      :data => "services.cloud.storage.monitor.disk.available"
+
+#field :used, :scale => 1,
+#	      :color => "blue",
+#	      :alias => "disk used",
+#	      :data => "services.cloud.storage.monitor.disk.used"
+
