@@ -2,7 +2,7 @@ title       "Cluster Health"
 #vtitle      " "
 #area        :first
 linewidth 2
-ymax 100.25
+ymax 101.25
 hide_grid false
 #linemode "staircase"
 
